@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>سایت عاشقانه</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #ffebf1;
+      direction: rtl;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 50px;
+    }
+
+    /* انیمیشن‌ها */
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInGlow {
+      0% {
+        opacity: 0;
+        text-shadow: none;
+      }
+      100% {
+        opacity: 1;
+        text-shadow: 0 0 30px rgba(255, 100, 200, 1),
+                     0 0 15px rgba(255, 100, 200, 0.8);
+      }
+    }
+
+    @keyframes fadeInLoveBox {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseText {
+      0% {
+        transform: scale(1);
+        text-shadow: 0 0 10px #ff3399;
+      }
+      50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 25px #ff0077;
+      }
+      100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px #ff3399;
+      }
+    }
+
+    @keyframes fadeInText {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* کادر بزرگ */
+    .big-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 25px;
+      padding: 50px 40px 90px;
+      width: 80%;
+      max-width: 900px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      opacity: 0;
+      transform: scale(0.8);
+      animation: popIn 1.5s ease forwards;
+      margin-bottom: 20px;
+    }
+
+    /* کادر عکس */
+    .card {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      max-width: 280px;
+      flex-shrink: 0;
+    }
+
+    .card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    /* متن عاشقانه */
+    .text-box {
+      flex: 1;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      color: #301934;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 2s ease forwards;
+      animation-delay: 1s;
+    }
+
+    /* امضای Tina */
+    .signature {
+      position: absolute;
+      bottom: 15px;
+      left: 30%;
+      transform: translateX(-30%);
+      font-family: 'Great Vibes', cursive;
+      font-size: 8rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ff4fa1, #8a3ca8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(255, 100, 200, 1),
+                   0 0 20px rgba(255, 100, 200, 0.8);
+      opacity: 0;
+      animation: fadeInGlow 2.5s ease forwards;
+      animation-delay: 2s;
+    }
+
+    /* کادر ME+YOU = ❤️ */
+    .love-box {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 25px 50px;
+      box-shadow: 0 8px 25px rgba(255, 100, 150, 0.3);
+      backdrop-filter: blur(8px);
+      animation: fadeInLoveBox 1.2s ease forwards;
+      opacity: 0;
+      margin-bottom: 20px;
+      text-align: center;
+      max-width: 90%;
+    }
+
+    .equation {
+      font-family: sans-serif;
+      font-size: 3.5rem;
+      font-weight: bold;
+      direction: ltr;
+      color: #ff0055;
+      text-shadow: 0 0 10px #ff66a6,
+                   0 0 20px #ff3399,
+                   0 0 30px #ff0077;
+      animation: pulseText 2s infinite;
+    }
+
+    /* کادر عکس دوست دختر - سمت راست */
+    .girlfriend-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 25px;
+      padding: 25px 20px;
+      width: 80%;
+      max-width: 900px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: flex-end;
+      gap: 30px;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: popIn 1.5s ease forwards;
+      margin-bottom: 40px;
+    }
+
+    .girlfriend-card img {
+      max-width: 350px;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(255, 100, 150, 0.5);
+    }
+
+    .girlfriend-text {
+      flex: 1;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #5a2a5e;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      animation: fadeInText 2s ease forwards;
+      animation-delay: 1.5s;
+      user-select: none;
+    }
+
+    /* کادر حلقه ازدواج (سوم) */
+    .ring-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 25px;
+      padding: 30px 40px 50px;
+      width: 80%;
+      max-width: 900px;
+      box-shadow: 0 14px 40px rgba(255, 50, 100, 0.3);
+      backdrop-filter: blur(15px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: popIn 1.5s ease forwards;
+      margin-bottom: 40px;
+    }
+
+    .ring-card img {
+      max-width: 100%;
+      max-height: 250px;
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(255, 50, 100, 0.5);
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .ring-text {
+      font-family: sans-serif;
+      font-size: 2.8rem;
+      color: #ff0044;
+      font-weight: bold;
+      text-align: center;
+      text-shadow:
+        0 0 12px #ff5577,
+        0 0 25px #ff2244;
+      animation: pulseText 3s infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="part1">
+    <div class="big-card">
+      <div class="card">
+        <img src="76b701f9-bee7-4123-a608-0ee49b2550a5.png" alt="گل آبی" />
+      </div>
+      <div class="text-box">
+        🌹 عشق مثل یک <b>گل رز آبی</b> است؛  
+        کمیاب، زیبا و همیشه جاودانه در قلب‌هایمان. 🌹
+      </div>
+      <div class="signature">Tina</div>
+    </div>
+
+    <div class="love-box">
+      <span class="equation">❤️ = ME + YOU</span>
+    </div>
+
+    <div class="girlfriend-card">
+      <div class="girlfriend-text">
+        ای مهربان‌تر از همه‌ی گل‌ها،  
+        زیبایی‌ات در نگاه من جاودانه است،  
+        هر لبخند تو چون شکوفه‌ای بهاری،  
+        زندگی را به دل من پرنور می‌کند.
+      </div>
+      <!-- لینک عکس دوست دخترت رو اینجا بزار -->
+      <img src="
+
+file:///C:/Users/WIn10/Desktop/2dbe4549-b972-49f2-a740-f371676fb7ba.png" alt="عکس دوست دختر" />
+    </div>
+
+    <div class="ring-card">
+      <!-- لینک عکس حلقه رو اینجا قرار بده -->
+      <img src="file:///C:/Users/WIn10/Desktop/Lovely-marriage-proposal-with-flat-design-Top.jpg" alt="حلقه ازدواج" />
+      <div class="ring-text">با من همراه می شوی؟ 💍❤️</div>
+    </div>
+  </section>
+
+  <section id="part3"></section>
+  <section id="part4"></section>
+
+</body>
+</html>
